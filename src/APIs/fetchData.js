@@ -1,11 +1,8 @@
 // import {data} from '../data/data.js'
-import {
-  PORT, 
-  PROTOCOL, 
-  HOSTNAME,
-} from '../config'
+import {config} from '../config'
 
 export const getData = async () => {
+  const {PORT, PROTOCOL, HOSTNAME,} = config; 
   const data = await fetch(`${PROTOCOL}://${HOSTNAME}:${PORT}/files`)
     .then(json=> json.json()) 
     .then(_data => _data)
