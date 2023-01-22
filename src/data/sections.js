@@ -4,10 +4,6 @@ export const routes = [
     title: "explore"
   }, 
   {
-    path: "/create",
-    title: "create"
-  }, 
-  {
     path: "/config",
     title: "config"
   }

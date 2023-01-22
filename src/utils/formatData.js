@@ -5,23 +5,31 @@ export const getData = async () => {
     console.log(data); 
 
     const formattedData = {
-        root_directory: data.root_directory, 
-        files_count: data.files_count,
-        directory_count: data.directory_count,
-        content: {
-            files: data.content.files.map(file => {
-                return {
-                    name: file.name.split('.')[0],
-                    extension: file.extension,
-                    created_on: dateFormatter(file.createdAt, 'date'),
-                    at: dateFormatter(file.createdAt, 'time'),
-                    size: sizeFormatter(file.size),
-                }
-            }), 
-            directories: data.content.directories
-        }
+      root_directory: data.root_directory, 
+      files_count: data.files_count,
+      directory_count: data.directory_count,
+      content: data.content.map(file => {
+        return file.dir 
+          ? {
+              name: file.name,
+              extension: file.extension,
+              created_on: file.createdAt,
+              at: file.createdAt,
+              size: file.size,
+              dir: file.dir
+            }
+          : {
+              name: file.name.split('.')[0],
+              extension: file.extension,
+              created_on: dateFormatter(file.createdAt, 'date'),
+              at: dateFormatter(file.createdAt, 'time'),
+              size: sizeFormatter(file.size),
+              dir: file.dir
+            }
+      })
     }
 
+    console.log(formattedData)
     return formattedData
 }
 

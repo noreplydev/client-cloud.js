@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { getData } from '../../../utils/formatData.js'
-import { FilesList } from './filesList/fileList.jsx'
+import { FilesList } from '../filesList/fileList.jsx'
 import { 
     Parent,
     SearchContainer, 

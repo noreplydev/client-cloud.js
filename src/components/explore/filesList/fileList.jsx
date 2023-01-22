@@ -7,8 +7,12 @@ import {
   Title,
   EntrysContainer,
   Row,
-  Entry
+  Entry, 
+  Img
 } from './style.js'
+
+import folder from '../../../assets/icons/folder-icon.svg'
+
 export const FilesList = ({ data }) => {
   const [entrys, setEntrys] = useState({...data})
 
@@ -28,10 +32,13 @@ export const FilesList = ({ data }) => {
         </TitleContainer>
         <EntrysContainer>
           { 
-            entrys.content.files.map( (file, index) => {
+            entrys.content.map((file, index) => {
               return (
                 <Row key={index}>
-                  <Entry width="50%">{file.name}</Entry>
+                  <Entry width="50%">
+                    { file.dir && <Img src={folder} alt="folder-icon"/> }
+                    {file.name}
+                  </Entry>
                   <Entry width="20%">{file.extension}</Entry>
                   <Entry width="20%">{file.created_on}</Entry>
                   <Entry width="20%">{file.at}</Entry>

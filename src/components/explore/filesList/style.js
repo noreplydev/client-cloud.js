@@ -28,6 +28,8 @@ export const Title = styled.p`
     width: ${props => props.width}; 
     padding: 10px 0px; 
     text-align: ${props => props.last ? 'right' : 'left'};
+    font-family: 'dm-mono-semibold', monospace;
+    font-weight: 500; 
 `
 
 export const EntrysContainer = styled.div`
@@ -50,21 +52,29 @@ export const Row = styled.div`
     justify-content: flex-start; 
     align-items: center;  
     padding: 0px 3vw; 
-    border-top: 1px solid #898989; 
+    border-top: 1px solid #ececec; 
+    transition: all .15s ease-in-out; 
 
     &:first-child {
         border-top: 0px; 
     }
 
     &:hover {
-        background-color: #ececec; 
+        background-color: #F2F2F2; 
+        cursor: pointer; 
     }
 `
-
-export const Entry = styled.p`
+ 
+export const Entry = styled.div`
     height: fit-content; 
     width: ${props => props.width}; 
     padding: 3vh 0px; 
     text-align: ${props => props.last ? 'right' : 'left'};
     overflow: hidden; 
+`
+
+export const Img = styled.img`
+    height: .7rem; 
+    width: auto; 
+    margin-right: 10px; 
 `
