@@ -1,28 +1,33 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 
 // styled components
 import {
   Table,
   TitleContainer, 
   Title,
-  EntrysContainer,
-  Row,
-  Entry, 
-  Img
+  EntrysContainer
 } from './style.js'
 
-import folder from '../../../assets/icons/folder-icon.svg'
+import { EntryRow } from '../entryRow/entryRow.jsx'
+import { ContextMenu } from '../contextMenu/contextMenu.jsx'
+import { showMenu } from '../../../events/showMenu.js'
 
 export const FilesList = ({ data }) => {
   const [entrys, setEntrys] = useState({...data})
+  const [target, setTarget] = useState(null)
+
+  const ref = useRef(null)
 
   useEffect(() => {
-    console.log(data)
-    console.log(entrys); 
-  }, [entrys, data])
+    const tableElement = ref.current
+    window.addEventListener('contextmenu', (e) => showMenu(e, target, setTarget))
+    return () => {
+      window.removeEventListener('contextmenu', (e) => showMenu(e, target, setTarget))
+    }
+  }, []) //eslint-disable-line
 
   return (
-    <Table>
+    <Table ref={ref}>
         <TitleContainer>
             <Title width="50%">Name</Title>
             <Title width="20%">Extension</Title>
@@ -31,19 +36,11 @@ export const FilesList = ({ data }) => {
             <Title width="20%" last>Size</Title>
         </TitleContainer>
         <EntrysContainer>
+          { target && <ContextMenu target={target}/> }
           { 
             entrys.content.map((file, index) => {
               return (
-                <Row key={index}>
-                  <Entry width="50%">
-                    {file.dir && <Img src={folder} alt="folder-icon"/>}
-                    {file.name}
-                  </Entry>
-                  <Entry width="20%">{file.extension}</Entry>
-                  <Entry width="20%">{file.created_on}</Entry>
-                  <Entry width="20%">{file.at}</Entry>
-                  <Entry width="20%" last>{file.size}</Entry>
-                </Row>
+                <EntryRow file={file} key={index}/>
               )
             })
           }

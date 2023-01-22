@@ -55,6 +55,5 @@ function dateFormatter(timestamp, type) {
     // for times
     const hour = date.getHours().toString()
     const minutes = date.getMinutes().toString()
-
-    return `${hour}:${minutes}`;
+    return `${hour}:${minutes.length < 2 ? '0'+minutes : minutes}`;
 }
