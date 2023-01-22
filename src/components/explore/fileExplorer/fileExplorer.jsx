@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { getData } from '../../../utils/formatData.js'
+import { getData } from '../../../APIs/fetchData.js'
 import { FilesList } from '../filesList/fileList.jsx'
 import { 
     Parent,

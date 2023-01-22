@@ -36,7 +36,7 @@ export const FilesList = ({ data }) => {
               return (
                 <Row key={index}>
                   <Entry width="50%">
-                    { file.dir && <Img src={folder} alt="folder-icon"/> }
+                    {file.dir && <Img src={folder} alt="folder-icon"/>}
                     {file.name}
                   </Entry>
                   <Entry width="20%">{file.extension}</Entry>
