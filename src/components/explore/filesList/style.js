@@ -40,20 +40,20 @@ export const EntrysContainer = styled.div`
     flex-direction: column; 
     justify-content: flex-start; 
     align-items: flex-start; 
-    overflow-y: scroll; 
+    overflow-y: scroll;  
 `
 
 export const Row = styled.div`
     position: relative;
-    height: 50px;
+    height: fit-content;
     width: 100%;
     display: flex; 
     flex-direction: row; 
     justify-content: flex-start; 
     align-items: center;  
     padding: 0px 3vw; 
-    border-top: 1px solid #ececec; 
-    transition: all .15s ease-in-out; 
+    border-top: 1px solid #bdbdbd; 
+    transition: all .15s ease-in-out;
 
     &:first-child {
         border-top: 0px; 

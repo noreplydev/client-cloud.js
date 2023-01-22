@@ -26,7 +26,6 @@ export const getData = async () => {
   return data
 }
 
-
 function sizeFormatter(bytes) {
     // converts bytes to human readable format
     const sizes = ['KB', 'MB', 'GB', 'TB']; 
@@ -40,6 +39,8 @@ function sizeFormatter(bytes) {
 }
 
 function dateFormatter(timestamp, type) {
+    if(timestamp === '-') return '-' // to handle the .. back directory
+
     // converts timestamp to human readable format
     const date = new Date(timestamp); 
 
