@@ -14,14 +14,14 @@ const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'dm-mono-medium';
         src: url(${medium});
-        font-weight: 500;
+        font-weight: 400;
         font-style: normal;
     }
 
     @font-face {
         font-family: 'dm-mono-semibold';
         src: url(${semibold});
-        font-weight: 600;
+        font-weight: 500;
         font-style: normal;
     }
 
@@ -36,6 +36,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         position: relative;
         background-color: #fff;
+        overflow: hidden; 
     }
     
     #root {

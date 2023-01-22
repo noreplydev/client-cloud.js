@@ -1,4 +1,6 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { getData } from '../../../utils/formatData.js'
+import { FilesList } from './filesList/fileList.jsx'
 import { 
     Parent,
     SearchContainer, 
@@ -9,6 +11,17 @@ import {
 } from './style.js'
 
 export const FileExplorer = () => {
+  const [data, setData] = useState(undefined)
+  
+  useEffect( () => {
+    async function fetchData() {
+      const data = await getData()
+      setData(data)
+    }
+
+    fetchData();
+  }, [])
+
   return (
     <Parent>
       <SearchContainer>
@@ -20,7 +33,9 @@ export const FileExplorer = () => {
           </Button>
         </InlineContainer>
       </SearchContainer>
-      
+      {
+        data && <FilesList data={data}/>
+      }
     </Parent>
   )
 }

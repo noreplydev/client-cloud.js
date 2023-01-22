@@ -10,6 +10,7 @@ export const Parent = styled.section`
     align-items: flex-start;
     background-color: #fff; 
     padding-bottom: 3vw; 
+    overflow: hidden; 
 `
 
 export const Separator = styled.div`

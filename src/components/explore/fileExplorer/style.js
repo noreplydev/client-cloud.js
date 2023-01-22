@@ -8,7 +8,7 @@ export const Parent = styled.section`
     justify-content: flex-start;
     align-items: baseline;
     background-color: #fff;
-    padding-inline: 2vw; 
+    padding-inline: 2vw;
 `
 
 export const SearchContainer = styled.div`
@@ -19,6 +19,7 @@ export const SearchContainer = styled.div`
     justify-content: center;
     align-items: baseline;
     padding-inline: 3vw;
+    margin-bottom: 30px; 
 `
 
 export const P = styled.p`
