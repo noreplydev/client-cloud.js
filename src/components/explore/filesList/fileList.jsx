@@ -9,25 +9,13 @@ import {
 } from './style.js'
 
 import { EntryRow } from '../entryRow/entryRow.jsx'
-import { ContextMenu } from '../contextMenu/contextMenu.jsx'
-import { showMenu } from '../../../events/showMenu.js'
+
 
 export const FilesList = ({ data }) => {
-  const [entrys, setEntrys] = useState({...data})
-  const [target, setTarget] = useState(null)
 
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const tableElement = ref.current
-    window.addEventListener('contextmenu', (e) => showMenu(e, target, setTarget))
-    return () => {
-      window.removeEventListener('contextmenu', (e) => showMenu(e, target, setTarget))
-    }
-  }, []) //eslint-disable-line
 
   return (
-    <Table ref={ref}>
+    <Table>
         <TitleContainer>
             <Title width="50%">Name</Title>
             <Title width="20%">Extension</Title>
@@ -35,10 +23,9 @@ export const FilesList = ({ data }) => {
             <Title width="20%">at</Title>
             <Title width="20%" last>Size</Title>
         </TitleContainer>
-        <EntrysContainer>
-          { target && <ContextMenu target={target}/> }
+        <EntrysContainer id="entries-container">                                                                                                                                                                               
           { 
-            entrys.content.map((file, index) => {
+            data.content.map((file, index) => {
               return (
                 <EntryRow file={file} key={index}/>
               )
