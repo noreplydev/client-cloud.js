@@ -68,7 +68,7 @@ export const Download = styled.img`
 
     @keyframes appear {
         0% {
-            scale: .80; 
+            scale: .50; 
             opacity: 0;
         }
         100% {

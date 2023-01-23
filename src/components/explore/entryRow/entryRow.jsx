@@ -26,7 +26,7 @@ export const EntryRow = ({ file, index }) => {
           <Container>
             <Download 
               src={download} 
-              onClick={(file) => downloadFile(file)}
+              onClick={(e) => downloadFile(e, file)}
               onMouseOver={(e) => showToast(e, setVisible)} 
               onMouseLeave={(e) => hideToast(e, setVisible)}
               alt="download-icon"

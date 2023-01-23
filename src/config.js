@@ -3,5 +3,4 @@ export const config = {
     PROTOCOL : 'http', // http or https
     HOSTNAME : '192.168.0.13', // ip or localhost
     DIRECTORY_DELIMITER : '+' // defined delimiter on the server 
-}
-
+} 
