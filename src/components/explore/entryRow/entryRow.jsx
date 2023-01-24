@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {
   Row,
   Entry, 
@@ -12,9 +12,11 @@ import {
 import folder from '../../../assets/icons/folder-icon.svg'
 import download from '../../../assets/icons/download-icon.svg'
 import { downloadFile, hideToast, showToast } from '../../../events/downloadButton.js'
+import { DownloadContext } from '../../../context/downloadContext.js'
 
 export const EntryRow = ({ file, index }) => {
   const [visible, setVisible] = useState(false); 
+  const { setDownloadState } = useContext(DownloadContext)
   const filename = file.name.length > 20 ? file.name.slice(0, 20) + ('…') : file.name
 
   return (
@@ -26,7 +28,7 @@ export const EntryRow = ({ file, index }) => {
           <Container>
             <Download 
               src={download} 
-              onClick={(e) => downloadFile(e, file)}
+              onClick={(e) => downloadFile(e, file, setDownloadState)}
               onMouseOver={(e) => showToast(e, setVisible)} 
               onMouseLeave={(e) => hideToast(e, setVisible)}
               alt="download-icon"

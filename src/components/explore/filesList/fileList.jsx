@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, {useContext} from 'react'
 
 // styled components
 import {
@@ -9,11 +9,12 @@ import {
 } from './style.js'
 
 import { EntryRow } from '../entryRow/entryRow.jsx'
+import { DownloadProgress } from '../downloadProgress/downloadProgress.jsx'
+import { DownloadContext } from '../../../context/downloadContext.js'
 
 
 export const FilesList = ({ data }) => {
-
-
+  const { download } = useContext(DownloadContext);
   return (
     <Table>
         <TitleContainer>
@@ -32,6 +33,7 @@ export const FilesList = ({ data }) => {
             })
           }
         </EntrysContainer>
+        { download && <DownloadProgress />}
     </Table>
   )
 }

@@ -11,16 +11,26 @@ export function hideToast(e, setVisible) {
     setVisible(false);
 }
 
-export function downloadFile(e, file) {
+export async function downloadFile(e, file, setDownloadState) {
   e.preventDefault()
 
+  setDownloadState({
+    name: file.name,
+    status: 'Please wait', 
+    progress: 0,
+    downloaded: false
+  })
+
   const { PORT, PROTOCOL, HOSTNAME } = config
-  fetch(`${PROTOCOL}://${HOSTNAME}:${PORT}/${file.url}`)
+  await fetch(`${PROTOCOL}://${HOSTNAME}:${PORT}/${file.url}`) 
     .then(response => response.blob())
     .then(blob => {
       const link = document.createElement('a')
       link.href = window.URL.createObjectURL(blob)
-      link.download = file.name+'.'+file.extension
+      link.download = file.name+file.extension
       link.click()
     })
+ 
+  setDownloadState(null)
+
 }
