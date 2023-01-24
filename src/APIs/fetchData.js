@@ -16,7 +16,6 @@ export const getData = async () => {
     
     //only files
     if (!entry.dir) {
-      entry.name = entry.name.split('.')[0]
       entry.size = sizeFormatter(entry.size)
     }
 
