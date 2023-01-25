@@ -12,11 +12,8 @@ export function hideToast(e, setVisible) {
 }
 
 export async function downloadFile(e, file, setDownloadState) {
-  e.preventDefault()
-
-
+  e.preventDefault() 
   /// remember do not allow another download if one is already in progress
-
   setDownloadState({
     name: file.name,
     status: '',

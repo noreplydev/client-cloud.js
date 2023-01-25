@@ -1,9 +1,11 @@
 // import {data} from '../data/data.js'
 import {config} from '../config'
 
-export const getData = async () => {
+export const getData = async (segments) => {
   const {PORT, PROTOCOL, HOSTNAME,} = config; 
-  const data = await fetch(`${PROTOCOL}://${HOSTNAME}:${PORT}/files`)
+  const url = segments.join('/')
+
+  const data = await fetch(`${PROTOCOL}://${HOSTNAME}:${PORT}/files/${url}`)
     .then(json=> json.json()) 
     .then(_data => _data)
 

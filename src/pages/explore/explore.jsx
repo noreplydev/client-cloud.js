@@ -7,13 +7,19 @@ import {
     Parent,
     Separator, 
 } from './style.js'
+import { DownloadProvider } from '../../context/downloadContext.js'
+import { WorkspaceProvider } from '../../context/workspaceContext.js'
 
 export const Explore = () => {
   return (
-    <Parent>
-      <FileExplorer/>
-      <Separator></Separator>
-      <Details/>
-    </Parent>
+    <WorkspaceProvider>
+      <DownloadProvider>
+        <Parent>
+          <FileExplorer/>
+          <Separator></Separator>
+          <Details/>
+        </Parent>
+      </DownloadProvider>
+    </WorkspaceProvider>
   )
 }
