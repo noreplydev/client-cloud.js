@@ -42,6 +42,12 @@ export const InlineContainer = styled.div`
     gap: 15px;
 `
 
+export const FolderGray = styled.img`
+    height: .7rem; 
+    width: auto; 
+    margin-right: 10px;
+`
+
 export const Searchbar = styled.input`
     height: fit-content; 
     width: 100%;

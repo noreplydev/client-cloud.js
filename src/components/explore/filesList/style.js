@@ -42,3 +42,33 @@ export const EntrysContainer = styled.div`
     align-items: flex-start; 
     overflow-y: scroll;  
 `
+
+export const NoEntriesContainer = styled.div`
+  height: 100%; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const Img = styled.img`
+  height: 25vh; 
+  width: auto;
+  margin-bottom: 20px;
+
+  @media (min-width: 1600px) {
+    height: 23vh;
+  }
+`
+
+export const Text = styled.p`
+  font-family: 'dm-mono-medium', monospace;
+  font-size: 1rem;
+  color: #898989;
+  text-align: center;
+
+  @media (min-width: 1600px) {
+    font-size: 1.1rem;
+  }
+`

@@ -6,9 +6,12 @@ import {
     SearchContainer, 
     P, 
     InlineContainer, 
+    FolderGray, 
     Searchbar, 
     Button
 } from './style.js'
+
+import folderIconGray from '../../../assets/icons/folder-icon-gray.svg'
 
 export const FileExplorer = () => {
   const [data, setData] = useState()
@@ -25,9 +28,11 @@ export const FileExplorer = () => {
   return (
     <Parent>
       <SearchContainer>
-        <P><span>/cloud</span></P>
+        <P>
+          <FolderGray src={folderIconGray} alt="cloud"/>
+          <span>/cloud</span></P>
         <InlineContainer>
-          <Searchbar type="text" placeholder="sample-file.txt" onChange={(e) => setFilter(e.target.value.toLowerCase())}/>
+          <Searchbar type="text" placeholder="sample-file" onChange={(e) => setFilter(e.target.value.toLowerCase())}/>
           <Button>
             create
           </Button>
