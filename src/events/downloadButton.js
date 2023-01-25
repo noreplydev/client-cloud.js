@@ -73,7 +73,7 @@ export async function downloadFile(e, file, setDownloadState) {
     .then(data => {
       const link = document.createElement('a')
       link.href = window.URL.createObjectURL(data)
-      link.download = file.name+file.extension
+      link.download = file.extension === '-' ? ''+file.name : file.name+file.extension
       link.click()
       setDownloadState(null)
     })
