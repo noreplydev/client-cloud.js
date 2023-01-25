@@ -13,8 +13,9 @@ import { DownloadProgress } from '../downloadProgress/downloadProgress.jsx'
 import { DownloadContext } from '../../../context/downloadContext.js'
 
 
-export const FilesList = ({ data }) => {
+export const FilesList = ({ entries }) => {
   const { download } = useContext(DownloadContext);
+  
   return (
     <Table>
         <TitleContainer>
@@ -26,7 +27,7 @@ export const FilesList = ({ data }) => {
         </TitleContainer>
         <EntrysContainer id="entries-container">                                                                                                                                                                               
           { 
-            data.content.map((file, index) => {
+            entries.map((file, index) => {
               return (
                 <EntryRow file={file} key={index}/>
               )

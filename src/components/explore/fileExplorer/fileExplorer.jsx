@@ -11,14 +11,14 @@ import {
 } from './style.js'
 
 export const FileExplorer = () => {
-  const [data, setData] = useState(undefined)
+  const [data, setData] = useState()
+  const [filter, setFilter] = useState('')
   
   useEffect( () => {
     async function fetchData() {
       const data = await getData()
       setData(data)
     }
-
     fetchData();
   }, [])
 
@@ -27,14 +27,14 @@ export const FileExplorer = () => {
       <SearchContainer>
         <P><span>/cloud</span></P>
         <InlineContainer>
-          <Searchbar type="text" placeholder="sample-file.txt"/>
+          <Searchbar type="text" placeholder="sample-file.txt" onChange={(e) => setFilter(e.target.value.toLowerCase())}/>
           <Button>
             create
           </Button>
         </InlineContainer>
       </SearchContainer>
       {
-        data && <FilesList data={data}/>
+        data && <FilesList entries={data.content.filter(entry => entry.name.toLowerCase().includes(filter))}/>
       }
     </Parent>
   )
