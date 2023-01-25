@@ -15,11 +15,11 @@ export const DownloadProgress = () => {
     <Container>
       <TextContainer>
         <Text></Text>
-        <Text color='#0055ff' align='center'>{download.status}</Text>
+        <Text color='#0055ff' align='center' id='progress'>{download.status}</Text>
         <Text color='#898989' align='right'>{download.file}</Text>
       </TextContainer>
       <ProgressContainer>
-        <Progress></Progress>
+        <Progress style={{width: `${download.progress}%`}}></Progress>
       </ProgressContainer>
     </Container>
   )

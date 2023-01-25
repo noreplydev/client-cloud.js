@@ -54,4 +54,5 @@ export const Progress = styled.div`
   height: 100%;
   width: 20%;
   background-color: #0055ff;
+  transition: width .01s ease-in;
 `
