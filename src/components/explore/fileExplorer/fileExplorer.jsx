@@ -32,7 +32,7 @@ export const FileExplorer = () => {
       <SearchContainer>
         <P>
           <FolderGray src={folderIconGray} alt="cloud"/>
-          <span>/files</span></P>
+          <span>files/</span>{workspace.segments.join('/')}</P>
         <InlineContainer>
           <Searchbar type="text" placeholder="sample-file" onChange={(e) => setFilter(e.target.value.toLowerCase())}/>
           <Button>

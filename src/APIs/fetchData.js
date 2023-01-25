@@ -2,8 +2,10 @@
 import {config} from '../config'
 
 export const getData = async (segments) => {
-  const {PORT, PROTOCOL, HOSTNAME,} = config; 
-  const url = segments.join('/')
+  const {PORT, PROTOCOL, HOSTNAME, DIRECTORY_DELIMITER} = config; 
+  const url = segments.join(DIRECTORY_DELIMITER)
+
+  console.log('url', url)
 
   const data = await fetch(`${PROTOCOL}://${HOSTNAME}:${PORT}/files/${url}`)
     .then(json=> json.json()) 
