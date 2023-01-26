@@ -5,7 +5,7 @@ import {config} from '../../../config.js'
 import {
   Parent, 
   Img, 
-  Text
+  Text, 
 } from './style.js'
 
 export const NoEntries = () => {

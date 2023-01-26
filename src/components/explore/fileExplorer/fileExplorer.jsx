@@ -20,7 +20,8 @@ export const FileExplorer = () => {
   const [path, setPath] = useState('')
   const [data, setData] = useState()
   const [filter, setFilter] = useState('')
-  
+  const [loaded, setLoaded] = useState(false)
+
   useEffect( () => {
     async function fetchData() {
       const data = await getData(workspace.segments)
