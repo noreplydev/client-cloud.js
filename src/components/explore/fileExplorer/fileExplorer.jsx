@@ -13,6 +13,7 @@ import {
 
 import folderIconGray from '../../../assets/icons/folder-icon-gray.svg'
 import { WorkspaceContext } from '../../../context/workspaceContext.js'
+import { NoEntries } from '../noEntries/noEntries.jsx'
 
 export const FileExplorer = () => {
   const { workspace } = useContext(WorkspaceContext)
@@ -44,7 +45,9 @@ export const FileExplorer = () => {
         </InlineContainer>
       </SearchContainer>
       {
-        data && <FilesList entries={data.content.filter(entry => entry.name.toLowerCase().includes(filter))}/>
+        data 
+        ?  <FilesList entries={data.content.filter(entry => entry.name.toLowerCase().includes(filter))}/>
+        :  <NoEntries/>
       }
     </Parent>
   )
