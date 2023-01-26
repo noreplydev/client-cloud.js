@@ -12,13 +12,14 @@ export const Nav = styled.nav`
     padding-block: 3vw; 
 `
 
-export const Title = styled.h1`
-    height: fit-content;
-    width: fit-content;
-    color: #000;
-    font-size: 2rem;
-    font-family: 'dm-mono-semibold', monospace;
-    margin-right: 40px;
+export const Img = styled.img`
+    margin-inline: 2vw 1vw; 
+    height: 40px;
+    width: auto;
+
+    &:hover {
+      cursor: pointer;
+    }
 `
 
 export const NavList = styled.ul`

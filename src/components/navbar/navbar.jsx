@@ -5,10 +5,12 @@ import { useLocation } from 'react-router-dom'
 //styled components
 import { 
     Nav, 
-    Title, 
+    Img, 
     NavList,
     Item,     
 } from './style.js'
+
+import logo from '../../assets/icons/logo-mini.png'
 
 const Navbar = () => {
 
@@ -16,7 +18,7 @@ const Navbar = () => {
 
   return (
     <Nav>
-      <Title>cloud.js</Title>
+      <Img src={logo} alt="logo" />
       <NavList>
         {
           routes.map((route) => {
