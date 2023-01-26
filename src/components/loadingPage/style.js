@@ -28,47 +28,44 @@ export const Blank = styled.div`
   }
 ` 
 
-export const Animation = styled.div`
-  position: relative; 
-  height: fit-content; 
-  width: fit-content;
-  display: flex; 
+export const Logo = styled.img`
+  height: auto;
+  width: 200px;
+  margin-bottom: 30px; 
+`
+
+export const Container = styled.div`
+  height: 3px; 
+  width: 300px;
+  display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 100px;  
-  margin-bottom: 20px; 
-`
+  justify-content: flex-start;
+  background-color: #ececec;
+  margin-bottom: 10px; 
 
-export const Img = styled.img`
-  height: 19px; 
-  width: auto; 
-  z-index: 2; 
-`
+  & > div {
+    height: 100%;
+    width: 0%; 
+    background-color: #000;
+    animation: loading 2.8s ease-in-out forwards;
+  }
 
-export const Data = styled.p`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  font-size: 0.6rem;
-  animation: transfer 1s linear infinite;
-  z-index: 1;
-
-  @keyframes transfer {
-    10% {
-      opacity: 0; 
-      bottom: 0;
-      left: 0;
-    } 50% {
-      opacity: 1; 
-      bottom: 60%;
-      left: 40%;
-    } 85% {
-      opacity: 0;
-    }100% {
-      bottom: 0;
-      left: 100%;
+  @keyframes loading {
+    0% {
+      width: 0%;
+    } 20% {
+      width: 20%;
+    } 30% {
+      width: 20%;
+    } 34% {
+      width: 23%;
+    } 60% {
+      width: 60%;
+    } 65% {
+      width: 60%;
+    } 100% {
+      width: 100%;
     }
   }
 `
