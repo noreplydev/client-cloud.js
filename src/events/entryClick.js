@@ -1,10 +1,13 @@
 export function entryClick(e, file, workspace, updateWorkspace) {
   e.preventDefault()
 
+  if (workspace.loading) return // avoid multiple clicks 
+
   if (!file.dir) {
     updateWorkspace({
       ...workspace, 
-      currentFile: file
+      currentFile: file,
+      loading: false
     })
     return
   }
@@ -19,5 +22,6 @@ export function entryClick(e, file, workspace, updateWorkspace) {
       ...file, 
       name: 'No file selected'
     },
+    loading: true
   })
 }

@@ -16,12 +16,15 @@ import { WorkspaceContext } from '../../../context/workspaceContext.js'
 
 export const FileExplorer = () => {
   const { workspace } = useContext(WorkspaceContext)
+  const [path, setPath] = useState('')
   const [data, setData] = useState()
   const [filter, setFilter] = useState('')
   
   useEffect( () => {
     async function fetchData() {
       const data = await getData(workspace.segments)
+      setPath(workspace.segments.join('/'))
+      workspace.loading = false
       setData(data)
     }
     fetchData();
@@ -32,7 +35,7 @@ export const FileExplorer = () => {
       <SearchContainer>
         <P>
           <FolderGray src={folderIconGray} alt="cloud"/>
-          <span>files/</span>{workspace.segments.join('/')}</P>
+          <span>files/</span>{path}</P>
         <InlineContainer>
           <Searchbar type="text" placeholder="sample-file" onChange={(e) => setFilter(e.target.value.toLowerCase())}/>
           <Button>
