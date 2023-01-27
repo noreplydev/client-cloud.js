@@ -16,29 +16,32 @@ import { WorkspaceContext } from '../../../context/workspaceContext.js'
 import { NoEntries } from '../noEntries/noEntries.jsx'
 
 export const FileExplorer = () => {
-  const { workspace } = useContext(WorkspaceContext)
+  const { workspace, updateWorkspace } = useContext(WorkspaceContext)
   const [path, setPath] = useState('')
   const [data, setData] = useState()
   const [filter, setFilter] = useState('')
-  const [loaded, setLoaded] = useState(false)
 
   useEffect( () => {
     async function fetchData() {
       const data = await getData(workspace.segments)
 
+      // set the searchbar path
       const segments = workspace.segments 
       const printablePath = workspace.segments.length <= 3 
         ? segments.join('/')
         : ' …/'+segments.slice(segments.length-3, segments.length).join('/')
 
       setPath(printablePath)
-      workspace.loading = false
+      updateWorkspace({
+        ...workspace,
+        folderUsage: data.folder_usage
+      })
       
       // set the last to avoid changing the directory before the path
       setData(data)
     }
     fetchData();
-  }, [workspace])
+  }, []) // eslint-disable-line
 
   return (
     <Parent>

@@ -18,7 +18,7 @@ export function entryClick(e, file, workspace, updateWorkspace) {
 
   updateWorkspace({
     ...workspace,
-    CWD: workspace.segments[workspace.segments.length - 1] || workspace.root, 
+    CWD: workspace.segments[workspace.segments.length - 1] || workspace.root, // use the last segment or the root directory
     segments: [...workspace.segments], // create a chain of segments
     currentFile: {
       ...file, 
