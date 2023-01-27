@@ -5,12 +5,15 @@ export const WorkspaceContext = createContext(); //
 export const WorkspaceProvider = ({children}) => {
   const [workspace, setWorkspace] = useState({
     root: 'files', // fallback directory if the segments are empty
-    CWD: 'files',
+    CWD: '',
     segments: [], 
     currentFile: {
       name: 'No selected file',
     }, 
-    folderUsage: []
+    folderUsage: [], 
+    loading: false,
+    path: '',
+    data: undefined, 
   });
 
   const updateWorkspace = (newWorkspace) => {

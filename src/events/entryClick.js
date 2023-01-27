@@ -1,3 +1,5 @@
+import { fetchData } from "../APIs/fetchData"
+
 export function entryClick(e, file, workspace, updateWorkspace) {
   e.preventDefault()
 
@@ -8,22 +10,20 @@ export function entryClick(e, file, workspace, updateWorkspace) {
     updateWorkspace({
       ...workspace, 
       currentFile: file,
-      loading: false
     })
     return
   }
 
   // if is .. directory pop the last segment otherwise push the new segment
   file.name === '..' ? workspace.segments.pop() : workspace.segments.push(file.name)
-
+  
   updateWorkspace({
     ...workspace,
-    CWD: workspace.segments[workspace.segments.length - 1] || workspace.root, // use the last segment or the root directory
     segments: [...workspace.segments], // create a chain of segments
-    currentFile: {
-      ...file, 
-      name: 'No file selected'
-    },
-    loading: true
+    loading: true // set loading to avoid multiple clicks
   })
+
+  // fetch the new folder data
+  fetchData(workspace, updateWorkspace)
+  
 }

@@ -3,6 +3,9 @@ import { WorkspaceContext } from '../../../context/workspaceContext'
 
 import {
   Container, 
+  FolderName, 
+  UsageLineContainer, 
+  Percentage
 } from './style.js'
 
 export const UsageLine = () => {
@@ -11,16 +14,20 @@ export const UsageLine = () => {
 
   return (
     <Container>
-      <p>{workspace.CWD}</p>
-      <div>
+      <FolderName>./{workspace.CWD}</FolderName>
+      <UsageLineContainer>
         {
-          workspace.folderUsage.map((unused, index) => {
+          workspace.folderUsage.map((item, index) => {
             return (
-              <div></div>
+              <Percentage 
+                key={item} 
+                color={colors[index]}
+                percentage={item[1]} // 0: name, 1: percentage ['.pdf', 34%]
+              ></Percentage>
             )
           })
         }
-      </div>
+      </UsageLineContainer>
     </Container>
   )
 }

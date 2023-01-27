@@ -1,6 +1,29 @@
 // import {data} from '../data/data.js'
 import {config} from '../config'
 
+
+export async function fetchData(workspace, updateWorkspace) {
+  // fetch the data
+  const data = await getData(workspace.segments)
+
+  // set the searchbar path
+  const segments = workspace.segments 
+  const printablePath = segments.length <= 3 
+    ? segments.join('/')
+    : ' …/'+segments.slice(segments.length-3, segments.length).join('/')
+
+  // udpate the workspace context to render the folder usage
+  updateWorkspace({
+    ...workspace,
+    CWD: workspace.segments[workspace.segments.length - 1], // use the last segment or the root directory
+    folderUsage: data.folder_usage,
+    loading: false, 
+    path: printablePath, 
+    data: data
+  })
+}
+
+// call to the server and get the data with the correct format
 export const getData = async (segments) => {
   const {PORT, PROTOCOL, HOSTNAME, DIRECTORY_DELIMITER} = config; 
   const url = segments.join(DIRECTORY_DELIMITER)
