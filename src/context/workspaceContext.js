@@ -4,6 +4,7 @@ export const WorkspaceContext = createContext(); //
 
 export const WorkspaceProvider = ({children}) => {
   const [workspace, setWorkspace] = useState({
+    root: 'files', 
     CWD: 'files',
     segments: [], 
     currentFile: {

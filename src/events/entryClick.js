@@ -3,6 +3,7 @@ export function entryClick(e, file, workspace, updateWorkspace) {
 
   if (workspace.loading) return // avoid multiple clicks 
 
+  // for files, update the current file and return
   if (!file.dir) {
     updateWorkspace({
       ...workspace, 
@@ -16,7 +17,8 @@ export function entryClick(e, file, workspace, updateWorkspace) {
   file.name === '..' ? workspace.segments.pop() : workspace.segments.push(file.name)
 
   updateWorkspace({
-    CWD: file.name, 
+    ...workspace,
+    CWD: workspace.segments[workspace.segments.length - 1] || workspace.root, 
     segments: [...workspace.segments], // create a chain of segments
     currentFile: {
       ...file, 
