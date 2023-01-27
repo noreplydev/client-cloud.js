@@ -23,6 +23,8 @@ export const SearchContainer = styled.div`
 `
 
 export const P = styled.p`
+    height: fit-content;
+    width: 100%;
     font-size: 1.1rem;
     font-family: 'dm-mono-medium', monospace;
     margin-bottom: 10px; 

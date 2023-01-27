@@ -25,8 +25,16 @@ export const FileExplorer = () => {
   useEffect( () => {
     async function fetchData() {
       const data = await getData(workspace.segments)
-      setPath(workspace.segments.join('/'))
+
+      const segments = workspace.segments 
+      const printablePath = workspace.segments.length <= 3 
+        ? segments.join('/')
+        : ' …/'+segments.slice(segments.length-3, segments.length).join('/')
+
+      setPath(printablePath)
       workspace.loading = false
+      
+      // set the last to avoid changing the directory before the path
       setData(data)
     }
     fetchData();
@@ -37,7 +45,9 @@ export const FileExplorer = () => {
       <SearchContainer>
         <P>
           <FolderGray src={folderIconGray} alt="cloud"/>
-          <span>files/</span>{path}</P>
+          <span>files/</span>
+          {path}
+        </P>
         <InlineContainer>
           <Searchbar type="text" placeholder="sample-file" onChange={(e) => setFilter(e.target.value.toLowerCase())}/>
           <Button>
