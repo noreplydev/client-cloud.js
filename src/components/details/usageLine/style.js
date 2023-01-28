@@ -21,12 +21,14 @@ export const UsageLineContainer = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  height: 5px;
+  height: 6px;
   width: 100%;
   background-color: #ececec;
+  margin-bottom: 70px; 
 `
 
 export const Percentage = styled.div`
+  position: relative;
   display: flex; 
   flex-direction: row;
   justify-content: flex-start;
@@ -34,4 +36,14 @@ export const Percentage = styled.div`
   background-color: ${props => props.color}; 
   height: 100%;
   width: ${props => props.percentage};
+  transition: height 0.05s ease-in-out;
+
+  &:hover {
+    height: 150%; 
+    cursor: pointer; 
+  }
+
+  &:hover > * {
+    display: flex;
+  }
 `

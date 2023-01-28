@@ -1,6 +1,6 @@
 import React from 'react'
 import { FileExplorer } from '../../components/explore/fileExplorer/fileExplorer.jsx'
-import { Details } from '../../components/details/details.jsx'
+import { Details } from '../../components/details/detailsParent/details.jsx'
 
 //styled components
 import {

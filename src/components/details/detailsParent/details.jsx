@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { WorkspaceContext } from '../../context/workspaceContext.js'
+import { WorkspaceContext } from '../../../context/workspaceContext.js'
 import {
     Parent, 
 } from './style.js'
-import { UsageLine } from './usageLine/usageLine.jsx'
+import { UsageLine } from '../usageLine/usageLine.jsx'
 
 export const Details = () => {
   const {workspace} = useContext(WorkspaceContext)
