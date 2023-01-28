@@ -18,6 +18,8 @@ export async function fetchData(workspace, updateWorkspace) {
     ...workspace,
     currentFile: {
       name: 'No selected file', // clear the current file
+      extension: '', 
+      url: '-', 
     }, 
     CWD: workspace.segments[workspace.segments.length - 1], // use the last segment or the root directory
     folderUsage: data.folder_usage,

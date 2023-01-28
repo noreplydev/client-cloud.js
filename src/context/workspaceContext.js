@@ -9,6 +9,7 @@ export const WorkspaceProvider = ({children}) => {
     segments: [], 
     currentFile: {
       name: 'No selected file',
+      extension: '', 
     }, 
     folderUsage: [], 
     loading: false,

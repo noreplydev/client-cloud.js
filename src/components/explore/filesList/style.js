@@ -27,6 +27,7 @@ export const Title = styled.p`
     height: fit-content; 
     width: ${props => props.width}; 
     padding: 10px 0px; 
+    font-size: 1rem;
     text-align: ${props => props.last ? 'right' : 'left'};
     font-family: 'dm-mono-semibold', monospace;
     font-weight: 500; 
