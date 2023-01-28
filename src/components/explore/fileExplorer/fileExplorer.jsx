@@ -5,10 +5,8 @@ import {
     Parent,
     SearchContainer, 
     P, 
-    InlineContainer, 
     FolderGray, 
-    Searchbar, 
-    Button
+    Searchbar,
 } from './style.js'
 
 import folderIconGray from '../../../assets/icons/folder-icon-gray.svg'
@@ -33,12 +31,7 @@ export const FileExplorer = () => {
           <span>files/</span>
           {workspace.path}
         </P>
-        <InlineContainer>
-          <Searchbar type="text" placeholder="sample-file" onChange={(e) => setFilter(e.target.value.toLowerCase())}/>
-          <Button>
-            create
-          </Button>
-        </InlineContainer>
+        <Searchbar type="text" placeholder="sample-file" onChange={(e) => setFilter(e.target.value.toLowerCase())}/>
       </SearchContainer>
       {
         workspace.data 

@@ -16,14 +16,8 @@ export function entryClick(e, file, workspace, updateWorkspace) {
 
   // if is .. directory pop the last segment otherwise push the new segment
   file.name === '..' ? workspace.segments.pop() : workspace.segments.push(file.name)
-  
-  updateWorkspace({
-    ...workspace,
-    segments: [...workspace.segments], // create a chain of segments
-    loading: true // set loading to avoid multiple clicks
-  })
+  workspace.loading = true; // reset loading state to avoid multiple clicks
 
   // fetch the new folder data
   fetchData(workspace, updateWorkspace)
-  
 }

@@ -2,6 +2,7 @@
 import {config} from '../config'
 
 
+// fetch on the first load and on every folder click
 export async function fetchData(workspace, updateWorkspace) {
   // fetch the data
   const data = await getData(workspace.segments)
@@ -15,6 +16,9 @@ export async function fetchData(workspace, updateWorkspace) {
   // udpate the workspace context to render the folder usage
   updateWorkspace({
     ...workspace,
+    currentFile: {
+      name: 'No selected file', // clear the current file
+    }, 
     CWD: workspace.segments[workspace.segments.length - 1], // use the last segment or the root directory
     folderUsage: data.folder_usage,
     loading: false, 

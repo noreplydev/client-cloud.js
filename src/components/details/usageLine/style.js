@@ -24,7 +24,7 @@ export const UsageLineContainer = styled.div`
   height: 6px;
   width: 100%;
   background-color: #ececec;
-  margin-bottom: 70px; 
+  margin-bottom: 75px; 
 `
 
 export const Percentage = styled.div`
