@@ -7,18 +7,21 @@ import {
     Text
 } from './style.js'
 import { UsageLine } from '../usageLine/usageLine.jsx'
+import { SizeOnFolder } from '../sizeOnFolder/sizeOnFolder.jsx'
 
 export const Details = () => {
   const {workspace} = useContext(WorkspaceContext)
-  const name = workspace.currentFile.name
-  const extension = workspace.currentFile.extension === '-' ? '' : workspace.currentFile.extension
+  const file = workspace.currentFile
+
+  const extension = file.extension === '-' ? '' : file.extension
 
   return (
     <Parent>
       <UsageLine/>  
-      <Filename>{name+extension}</Filename>
+      <Filename>{file.name+extension}</Filename>
       <Title>Full path</Title>
       <Text>{workspace.currentFile.url}</Text>
+      <SizeOnFolder/>
     </Parent>
   )
 }
