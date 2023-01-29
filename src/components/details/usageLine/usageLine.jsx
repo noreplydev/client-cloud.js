@@ -23,7 +23,7 @@ export const UsageLine = () => {
       <FolderName>Folder usage</FolderName>
       <UsageLineContainer>
         {
-          workspace.folderUsage.map((item, index) => {
+          workspace.folder_usage.map((item, index) => {
             return (
               <Percentage 
                 key={item} 

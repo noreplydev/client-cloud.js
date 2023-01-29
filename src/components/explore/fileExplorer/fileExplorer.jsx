@@ -34,8 +34,8 @@ export const FileExplorer = () => {
         <Searchbar type="text" placeholder="sample-file" onChange={(e) => setFilter(e.target.value.toLowerCase())}/>
       </SearchContainer>
       {
-        workspace.data 
-        ?  <FilesList entries={workspace.data.content.filter(entry => entry.name.toLowerCase().includes(filter))}/>
+        workspace.files 
+        ?  <FilesList entries={workspace.files.filter(entry => entry.name.toLowerCase().includes(filter))}/>
         :  <NoEntries/>
       }
     </Parent>
