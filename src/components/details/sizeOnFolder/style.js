@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  position: relative;
   height: fit-content; 
   width: 100%;
   display: flex;
   flex-direction: column; 
   align-items: flex-start; 
-  justify-content: flex-start; 
+  justify-content: flex-start;
+  margin-bottom: 5vh; 
 `
 
 export const Title = styled.p`

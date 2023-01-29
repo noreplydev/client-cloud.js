@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { WorkspaceContext } from '../../../context/workspaceContext.js'
 import {
-    Parent, 
-    Filename, 
+    Parent,
+    Button, 
+    Wrapper,  
     Title, 
     Text
 } from './style.js'
@@ -17,11 +18,15 @@ export const Details = () => {
 
   return (
     <Parent>
-      <UsageLine/>  
-      <Filename>{file.name+extension}</Filename>
-      <Title>Full path</Title>
-      <Text>{workspace.currentFile.url}</Text>
-      <SizeOnFolder/>
+      <Button>Upload file</Button>
+      <UsageLine/> 
+      <Wrapper>
+        <Title>Filename</Title>
+        <Text>{file.name+extension}</Text>
+        <Title>Full path</Title>
+        <Text>{workspace.currentFile.url}</Text>
+        <SizeOnFolder/>
+      </Wrapper>
     </Parent>
   )
 }
