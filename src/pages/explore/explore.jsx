@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FileExplorer } from '../../components/explore/fileExplorer/fileExplorer.jsx'
 import { Details } from '../../components/details/detailsParent/details.jsx'
 
@@ -11,8 +11,11 @@ import {
 import { DownloadProvider } from '../../context/downloadContext.js'
 import { WorkspaceProvider } from '../../context/workspaceContext.js'
 import { LoadingPage } from '../../components/loadingPage/loadingPage.jsx'
+import { DropFilesModal } from '../../components/dropFilesModal/dropFileModal.jsx'
 
 export const Explore = () => {
+  const [showDropFiles, setShowDropFiles] = useState(false)
+
   return (
     <WorkspaceProvider>
       <DownloadProvider>
@@ -20,8 +23,9 @@ export const Explore = () => {
           <LoadingPage/>
           <FileExplorer/>
           <Separator></Separator>
-          <Details/>
+          <Details setShowDropFiles={setShowDropFiles}/>
         </Parent>
+        {showDropFiles && <DropFilesModal setShowDropFiles={setShowDropFiles}/>}
       </DownloadProvider>
     </WorkspaceProvider>
   )

@@ -33,6 +33,7 @@ export const SizeLine = styled.div`
   height: 100%; 
   width: ${props => props.width};
   background-color: #000; 
+  border-right: 5px solid #fff;
 `
 
 export const SizesText = styled.div`

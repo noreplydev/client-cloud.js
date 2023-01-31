@@ -16,6 +16,7 @@ export const WorkspaceProvider = ({children}) => {
     data: undefined, // the data to be displayed on the table
   });
 
+  
   const updateWorkspace = (newWorkspace) => {
     setWorkspace(newWorkspace);
   }

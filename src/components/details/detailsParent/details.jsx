@@ -10,7 +10,7 @@ import {
 import { UsageLine } from '../usageLine/usageLine.jsx'
 import { SizeOnFolder } from '../sizeOnFolder/sizeOnFolder.jsx'
 
-export const Details = () => {
+export const Details = ({setShowDropFiles}) => {
   const {workspace} = useContext(WorkspaceContext)
   const file = workspace.currentFile
 
@@ -18,7 +18,7 @@ export const Details = () => {
 
   return (
     <Parent>
-      <Button>Upload file</Button>
+      <Button onClick={() => setShowDropFiles(true)}>Upload file</Button>
       <UsageLine/> 
       <Wrapper>
         <Title>Filename</Title>
