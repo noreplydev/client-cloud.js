@@ -1,4 +1,4 @@
-import styled from 'styled-components'; 
+import styled from 'styled-components';  
 
 export const ModalContainer = styled.section`
   position: absolute;
@@ -20,36 +20,26 @@ export const Modal = styled.div`
   padding: 5vh; 
   background-color: #fff;
   animation: appearModal .15s ease-in-out; 
-
-  &:hover {
-    box-shadow: inset 0px 0px 0px 1px #0055ff; 
-  }
-
-  &:hover #drop-file {
-    display: none; 
-  }
-
-  &:hover #drop-file-hover {
-    display: block;
-  }
+  box-shadow: inset 0px 0px 0px 1px #fff;
+  transition: all .05s ease-in-out; 
 
   @keyframes appearModal {
     0% {
       opacity: 0;
-      scale: 0.5; 
+      margin-top: 10vh; 
     } 100% {
       opacity: 1;
-      scale: 1; 
+      margin-top: 0;
     }
   }
 `
 
 export const Form = styled.form`
-  height: 100%; 
-  width: 100%;
+  height: fit-content; 
+  width: 30vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 `
 
@@ -57,39 +47,58 @@ export const Input = styled.input`
   display: none;
 `
 
-export const ImageWrapper = styled.div`
-  height: 20vh;
-  width: 20vh;
-  border-radius: 50%;
-  padding: 5vh; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-export const Img = styled.img`
-  height: 70%;
-  width: auto;
-`
-
-export const ImgHover = styled.img`
-  display: none;
-  height: 100%;
-  width: auto;
-  animation: appearImg .15s ease-in-out;
-
-  @keyframes appearImg {
-    0% {
-      opacity: 0;
-      scale: 0.5;
-    } 100% {
-      opacity: 1;
-      scale: 1;
-    }
-  }
+export const Title = styled.p`
+  font-size: 1.1rem; 
+  font-family: 'dm-mono-medium', monospace;
+  color: #000; 
+  margin-bottom: 1.5vh; 
 `
 
 export const Text = styled.p`
   font-size: 1rem;
   font-family: 'dm-mono-medium', monospace; 
+  color: #898989; 
+  margin-bottom: 3vh; 
+`
+
+export const File = styled.svg`
+  position: absolute;
+  height:15vh; 
+  width: auto;
+  opacity: 0.3;
+  bottom: 0px; 
+  left: 50%;
+  transform: translateX(-50%) translateY(50%);
+  fill: #898989;
+  z-index: 0;
+  transform-origin: bottom left;
+`
+
+export const DragZone = styled.div`
+  position: relative;
+  height: 25vh;
+  width: 100%;
+  border-radius: 3.5vh;
+  background-color: #ececec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0px 0px 0px 1px #8989897c;
+  overflow: hidden;
+  transition: all .15s ease-in-out;
+  color: #898989;
+
+  &.dropActive {
+    box-shadow: inset 0px 0px 0px 1px #0055ff;
+    background-color: #0055ff67;
+    color: #000;
+    fill: #000;
+  }
+`
+
+export const DropText = styled.p`
+  font-size: 1.1rem;
+  font-family: 'dm-mono-medium', monospace;
+  z-index: 1;
 `

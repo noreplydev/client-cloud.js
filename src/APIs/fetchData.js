@@ -11,7 +11,7 @@ export async function fetchData(workspace, updateWorkspace) {
   const segments = workspace.segments 
   const printablePath = segments.length <= 3 
     ? segments.join('/')
-    : ' …/'+segments.slice(segments.length-3, segments.length).join('/')
+    : '…/'+segments.slice(segments.length-3, segments.length).join('/')
 
   // udpate the workspace context to render the folder usage
   updateWorkspace({
