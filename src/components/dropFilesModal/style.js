@@ -98,7 +98,25 @@ export const DragZone = styled.div`
 `
 
 export const DropText = styled.p`
+  text-align: center;
   font-size: 1.1rem;
   font-family: 'dm-mono-medium', monospace;
   z-index: 1;
+  line-height: 2rem;
+`
+
+export const SelectButton = styled.span`
+  padding: 0.5vh 1vh; 
+  border-radius: 1vh;
+  margin-left: 10px; 
+  background-color: transparent;
+  box-shadow: inset 0px 0px 0px 1px #000;
+  color: #000;
+  cursor: pointer;
+  transition: all .15s ease-in-out;
+
+  &:hover {
+    background-color: #000;
+    color: #fff;
+  }
 `
