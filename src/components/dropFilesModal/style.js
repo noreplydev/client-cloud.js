@@ -120,3 +120,29 @@ export const SelectButton = styled.span`
     color: #fff;
   }
 `
+
+export const Loader = styled.div`
+  position: relative; 
+  height: 0.4vh; 
+  width: 100%; 
+  background-color: #ececec;
+  margin-top: -0.2vh; 
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 40%;
+    background-color: #000;
+    animation: loading .8s ease-in-out infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%);
+    } 100% {
+      transform: translateX(300%);
+    }
+  }
+`
