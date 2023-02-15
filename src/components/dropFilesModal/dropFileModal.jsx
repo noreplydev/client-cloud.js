@@ -11,6 +11,7 @@ import {
   DropText, 
   File,
   SelectButton, 
+  SendButton, 
   Loader
 } from './style.js'
 
@@ -23,7 +24,7 @@ export const DropFilesModal = ({setShowDropFiles}) => {
 
   const {workspace, updateWorkspace} = useContext(WorkspaceContext)
   const [dragActive, setDragActive] = useState(false)
-  const [file, setFile] = useState()
+  const [file, setFile] = useState(null)
   const [sending, setSending] = useState(false) // to display a loading animation
 
   const input = useRef(null)
@@ -49,20 +50,36 @@ export const DropFilesModal = ({setShowDropFiles}) => {
     e.preventDefault();
     setDragActive(false);
 
-    if (e.dataTransfer.files) {  
-      console.log(e.dataTransfer.files)
-      setFile(e.dataTransfer.files[0]); 
+    if (!e.dataTransfer.files) {  
+      return
     }
+
+    if (e.dataTransfer.files[0].size > 20000000) {
+      console.error('File is too big')
+      setFile({name: "Error: The file exceeds the maximum size of 200MB"});
+      return
+    }
+
+    console.log(e.dataTransfer.files)
+    setFile(e.dataTransfer.files[0]); 
   };
 
   // triggers when file is selected with click
   function handleChange(e) {
     e.preventDefault();
 
-    if (e.target.files) {
-      console.log(e.target.files)
-      setFile(e.target.files[0]); 
+    if (!e.target.files) {
+      return 
     }
+
+    if (e.target.files[0].size > 200000000) {
+      console.error('File is too big')
+      setFile({name: "Error: The file exceeds the maximum size of 200MB"});
+      return
+    }
+
+    console.log(e.target.files[0])
+    setFile(e.target.files[0]); 
   };
     
   // open file manager to select files
@@ -76,10 +93,16 @@ export const DropFilesModal = ({setShowDropFiles}) => {
     e.preventDefault()
 
     if (!file) {
-      console.log('no file selected')
+      console.error('No file selected')
       return 
     }
-    
+
+    if (!file.size || file.size > 200000000) {
+      console.error('Cannot send the file, the size is too big')
+      setFile({name: "Error: Cannot send the file, the size is too big"})
+      return
+    }
+
     try {
       setSending(true)
       const formData = new FormData()
@@ -95,6 +118,7 @@ export const DropFilesModal = ({setShowDropFiles}) => {
           fetchData(workspace, updateWorkspace) // fetch workspace data again to update the files list
           setShowDropFiles(false) // close modal
         })
+        .catch(err => console.error(err))
     } catch (error) {
       console.log(error)
     }
@@ -117,7 +141,7 @@ export const DropFilesModal = ({setShowDropFiles}) => {
                   onDragOver={handleDrag} // necessary with html5 to handle drop event
                   onDragLeave={handleDrag} 
                   onDrop={handleDrop}
-                  >
+                >
                   <DropText>Drop files <br></br> or 
                     <SelectButton onClick={openFileManager}>select</SelectButton>
                   </DropText>
@@ -125,7 +149,10 @@ export const DropFilesModal = ({setShowDropFiles}) => {
                     <path d="M268.54,289H231.46a10.11,10.11,0,0,1-10.11-10.11V221.11A10.11,10.11,0,0,1,231.46,211h27.15a10.12,10.12,0,0,1,7.39,3.21l9.92,10.61a10.11,10.11,0,0,1,2.73,6.9v47.17A10.11,10.11,0,0,1,268.54,289Z" transform="translate(-221.35 -211)"/>
                   </File>
                 </DragZone>
-                <SelectButton onClick={sendData}>send</SelectButton>
+                {
+                  file && <p>{file.name}</p>
+                }
+                <SendButton onClick={sendData}>Upload</SendButton>
               </>
           }
         </Form>

@@ -88,6 +88,7 @@ export const DragZone = styled.div`
   overflow: hidden;
   transition: all .15s ease-in-out;
   color: #898989;
+  margin-bottom: 3vh;
 
   &.dropActive {
     box-shadow: inset 0px 0px 0px 1px #0055ff;
@@ -145,4 +146,20 @@ export const Loader = styled.div`
       transform: translateX(300%);
     }
   }
+`
+
+export const SendButton = styled.button`
+  position: relative; 
+  height: fit-content; 
+  width: fit-content;
+  border: none;
+  background-color: #000; 
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'dm-mono-regular', monospace;
+  font-weight: 400;
+  padding: 1vh 1.3vh; 
+  border-radius: 1vh;
+  align-self: flex-end;
+  cursor: pointer;
 `
