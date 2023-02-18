@@ -20,7 +20,7 @@ import { WorkspaceContext } from '../../context/workspaceContext.js'
 import {fetchData} from '../../APIs/fetchData.js'
 
 export const DropFilesModal = ({setShowDropFiles}) => {
-  const {PORT, PROTOCOL, HOSTNAME} = config
+  const {PORT, PROTOCOL, HOSTNAME, DIRECTORY_DELIMITER} = config
 
   const {workspace, updateWorkspace} = useContext(WorkspaceContext)
   const [dragActive, setDragActive] = useState(false)
@@ -108,7 +108,9 @@ export const DropFilesModal = ({setShowDropFiles}) => {
       const formData = new FormData()
       formData.append('file', file)
 
-      await fetch(`${PROTOCOL}://${HOSTNAME}:${PORT}/upload`, {
+      const path = workspace.path.split('/').join(DIRECTORY_DELIMITER)
+
+      await fetch(`${PROTOCOL}://${HOSTNAME}:${PORT}/upload/${path}`, {
         method: 'POST',
         body: formData
       })
