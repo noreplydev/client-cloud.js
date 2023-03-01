@@ -1,5 +1,4 @@
 
-import {config} from '../config.js'
 
 export function showToast(e, setVisible) {
     e.preventDefault();
@@ -24,7 +23,7 @@ export async function downloadFile(e, file, setDownloadState) {
     downloaded: false, 
   })
 
-  const { PORT, PROTOCOL, HOSTNAME } = config
+  const { PORT, PROTOCOL, HOSTNAME } = window.config
   await fetch(`${PROTOCOL}://${HOSTNAME}:${PORT}/${file.url}`) 
     .then(response => {
       if(!response.ok) {

@@ -1,5 +1,4 @@
 // import {data} from '../data/data.js'
-import {config} from '../config'
 
 
 // fetch on the first load and on every folder click
@@ -33,7 +32,7 @@ export async function fetchData(workspace, updateWorkspace) {
 
 // call to the server and get the data with the correct format
 export const getData = async (segments) => {
-  const {PORT, PROTOCOL, HOSTNAME, DIRECTORY_DELIMITER} = config; 
+  const {PORT, PROTOCOL, HOSTNAME, DIRECTORY_DELIMITER} = window.config; 
   const url = segments.join(DIRECTORY_DELIMITER)
 
   const data = await fetch(`${PROTOCOL}://${HOSTNAME}:${PORT}/files/${url}`)

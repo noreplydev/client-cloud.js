@@ -1,6 +1,5 @@
 import React from 'react'
 import server from '../../../assets/icons/server.svg'
-import {config} from '../../../config.js'
 
 import {
   Parent, 
@@ -9,7 +8,7 @@ import {
 } from './style.js'
 
 export const NoEntries = () => {
-  const { PORT, PROTOCOL, HOSTNAME } = config
+  const { PORT, PROTOCOL, HOSTNAME } = window.config
 
   return (
     <Parent>
