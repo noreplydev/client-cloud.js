@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Nav = styled.nav`
@@ -7,7 +6,7 @@ export const Nav = styled.nav`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: baseline;
+    align-items: center;
     background-color: #fff;
     padding-block: 3vw; 
 `
@@ -22,23 +21,12 @@ export const Img = styled.img`
     }
 `
 
-export const NavList = styled.ul`
-    height: fit-content; 
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    list-style: none; 
-    gap: 20px; 
-`
-
-export const Item = styled(Link)`
+export const Tittle = styled.p`
     height: fit-content;
     width: fit-content;
     color: #000;
     font-size: 1.1rem;
-    color: ${(props) => props.id ? '#000' : '#898989'}; 
+    color: #000; 
     font-weight: 500;
     transition: color 0.2s ease-in-out;
     text-decoration: none;

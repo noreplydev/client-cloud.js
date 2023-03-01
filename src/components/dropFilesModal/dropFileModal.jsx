@@ -15,12 +15,11 @@ import {
   Loader
 } from './style.js'
 
-import { config } from '../../config.js'
 import { WorkspaceContext } from '../../context/workspaceContext.js'
 import {fetchData} from '../../APIs/fetchData.js'
 
 export const DropFilesModal = ({setShowDropFiles}) => {
-  const {PORT, PROTOCOL, HOSTNAME, DIRECTORY_DELIMITER} = config
+  const {PORT, PROTOCOL, HOSTNAME, DIRECTORY_DELIMITER} = window.config
 
   const {workspace, updateWorkspace} = useContext(WorkspaceContext)
   const [dragActive, setDragActive] = useState(false)
@@ -114,8 +113,8 @@ export const DropFilesModal = ({setShowDropFiles}) => {
         method: 'POST',
         body: formData
       })
-        .then(res => res.json())
-        .then(res => {
+      .then(res => res.json())
+      .then(res => {
           console.log(res)
           fetchData(workspace, updateWorkspace) // fetch workspace data again to update the files list
           setShowDropFiles(false) // close modal

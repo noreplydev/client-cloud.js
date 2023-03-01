@@ -6,12 +6,10 @@ import {
   Container,
   Text
 } from './style.js'
-
-import {config} from '../../config.js'
 import logo from '../../assets/icons/logo.svg'
 
 export const LoadingPage = () => {
-  const { PROTOCOL, HOSTNAME, PORT } = config
+  const { PROTOCOL, HOSTNAME, PORT } = window.config
 
   return (
     <Blank>
